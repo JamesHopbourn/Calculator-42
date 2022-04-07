@@ -1,4 +1,5 @@
-### Java 程序设计
+### Calculator-42
+仿 macOS 风格 Java 实现的计算器
 
 #### 参考资料
 [java计算器程序_哔哩哔哩](https://www.bilibili.com/video/BV1d54y1s7uC)  
