@@ -150,7 +150,7 @@ public class Calculator42 extends JFrame implements ActionListener {
             if (result == JOptionPane.YES_OPTION) {
                 Desktop desk = Desktop.getDesktop();
                 try {
-                    desk.browse(new URI("https://xyz.com"));
+                    desk.browse(new URI("https://github.com/JamesHopbourn/Calculator-42"));
                 } catch (IOException | URISyntaxException ex) {
                     ex.printStackTrace();
                 }
