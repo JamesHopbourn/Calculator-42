@@ -13,6 +13,5 @@
 [How to Make Dialogs (The Java™ Tutorials > Creating a GUI With Swing > Using Swing Components)](https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html)  
 [Resize ImageIcon (Swing / AWT / SWT forum at Coderanch)](https://coderanch.com/t/331731/java/Resize-ImageIcon)  
 [swing - Java: Custom Buttons in showInputDialog - Stack Overflow](https://stackoverflow.com/questions/13334198/java-custom-buttons-in-showinputdialog)  
-[How to Make Dialogs (The Java™ Tutorials > Creating a GUI With Swing > Using Swing Components)](https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html#button)  
 [Open URL in Java to get the content - Stack Overflow](https://stackoverflow.com/questions/9977221/open-url-in-java-to-get-the-content)  
 [Java Program to Open Input URL in System Default Browser in Windows - GeeksforGeeks](https://www.geeksforgeeks.org/java-program-to-open-input-url-in-system-default-browser-in-windows/)  
