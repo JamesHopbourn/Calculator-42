@@ -16,3 +16,6 @@
 [swing - Java: Custom Buttons in showInputDialog - Stack Overflow](https://stackoverflow.com/questions/13334198/java-custom-buttons-in-showinputdialog)  
 [Open URL in Java to get the content - Stack Overflow](https://stackoverflow.com/questions/9977221/open-url-in-java-to-get-the-content)  
 [Java Program to Open Input URL in System Default Browser in Windows - GeeksforGeeks](https://www.geeksforgeeks.org/java-program-to-open-input-url-in-system-default-browser-in-windows/)  
+[java - .setBackgroundColor with Hex Color Codes AndroidStudio - Stack Overflow](https://stackoverflow.com/questions/25837449/setbackgroundcolor-with-hex-color-codes-androidstudio)  
+[JTextField: addFocusListener(FocusListener l) : JTextField javax.swing Java by API](http://www.java2s.com/Code/JavaAPI/javax.swing/JTextFieldaddFocusListenerFocusListenerl.htm)  
+

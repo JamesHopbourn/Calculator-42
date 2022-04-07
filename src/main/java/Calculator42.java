@@ -1,3 +1,5 @@
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.io.*;
 import java.awt.*;
 import java.net.*;
@@ -67,6 +69,15 @@ public class Calculator42 extends JFrame implements ActionListener {
                 ex.printStackTrace();
             }
             finish = true;
+        });
+        label.addFocusListener(new FocusListener() {
+            public void focusGained(FocusEvent e) {
+                if (finish) label.setText("");
+            }
+
+            public void focusLost(FocusEvent e) {
+                if (finish) label.setText("");
+            }
         });
         JP_north.add(label);
         this.add(JP_north, BorderLayout.NORTH);
@@ -257,10 +268,13 @@ public class Calculator42 extends JFrame implements ActionListener {
         // OTHPattern: 10 usd to twd
         Pattern CNYPattern = Pattern.compile("(\\d+)\\s+to\\s+(\\w+)");
         Pattern OTHPattern = Pattern.compile("(\\d+)\\s+(\\w+)\\s+to\\s+(\\w+)");
+        Pattern successPattern = Pattern.compile("\\d+(|\\.\\d+) \\w{3}");
         Matcher CNY = CNYPattern.matcher(s);
         Matcher OTH = OTHPattern.matcher(s);
+        Matcher success = successPattern.matcher(s);
         if (CNY.find()) return getRateCNY(CNY);
         if (OTH.find()) return getRateOTH(OTH);
+        if (success.find()) return "";
         return "转换失败";
     }
 
