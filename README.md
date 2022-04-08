@@ -19,4 +19,10 @@
 [java - .setBackgroundColor with Hex Color Codes AndroidStudio - Stack Overflow](https://stackoverflow.com/questions/25837449/setbackgroundcolor-with-hex-color-codes-androidstudio)  
 [JTextField: addFocusListener(FocusListener l) : JTextField javax.swing Java by API](http://www.java2s.com/Code/JavaAPI/javax.swing/JTextFieldaddFocusListenerFocusListenerl.htm)   
 [swing - Copying text to the clipboard using Java - Stack Overflow](https://stackoverflow.com/questions/6710350/copying-text-to-the-clipboard-using-java)   
-
+[hash - How to call a method stored in a HashMap? (Java) - Stack Overflow](https://stackoverflow.com/questions/4480334/how-to-call-a-method-stored-in-a-hashmap-java)  
+[function - How to make a hashmap of dynamic methods in Java - Stack Overflow](https://stackoverflow.com/questions/50669922/how-to-make-a-hashmap-of-dynamic-methods-in-java)  
+[How can I map a String to a function in Java? - Stack Overflow](https://stackoverflow.com/questions/2745796/how-can-i-map-a-string-to-a-function-in-java)  
+[Can I map a String to a method in java? - Stack Overflow](https://stackoverflow.com/questions/6721318/can-i-map-a-string-to-a-method-in-java)  
+[java - adding multiple entries to a HashMap at once in one statement - Stack Overflow](https://stackoverflow.com/questions/8261075/adding-multiple-entries-to-a-hashmap-at-once-in-one-statement)  
+[Java 消除 if else 代码的几种方式 | 程序员技术之旅](https://www.zhangbj.com/p/793.html)  
+[Using Map and HashMap in Java](https://www.vogella.com/tutorials/JavaMap/article.html)  
