@@ -278,13 +278,13 @@ public class Calculator42 extends JFrame implements ActionListener {
         // OTHPattern: 10 usd to twd
         Pattern CNYPattern = Pattern.compile("(\\d+)\\s+to\\s+(\\w+)");
         Pattern OTHPattern = Pattern.compile("(\\d+)\\s+(\\w+)\\s+to\\s+(\\w+)");
-        Pattern successPattern = Pattern.compile("\\d+(|\\.\\d+) \\w{3}");
+        Pattern resultPattern = Pattern.compile("\\d+(|\\.\\d+) \\w{3}");
         Matcher CNY = CNYPattern.matcher(s);
         Matcher OTH = OTHPattern.matcher(s);
-        Matcher success = successPattern.matcher(s);
+        Matcher result = resultPattern.matcher(s);
         if (CNY.find()) return getRateCNY(CNY);
         if (OTH.find()) return getRateOTH(OTH);
-        if (success.find()) return "";
+        if (result.find()) return "";
         return "转换失败";
     }
 
