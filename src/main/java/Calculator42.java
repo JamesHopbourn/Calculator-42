@@ -288,7 +288,7 @@ public class Calculator42 extends JFrame implements ActionListener {
 
     // 人民币对其他币种
     public static String getRateCNY(Matcher matcher) throws IOException {
-        JSONObject data = getData("cny");
+        JSONObject data = getData("CNY");
         float rate = Float.parseFloat(data.getString(matcher.group(2).toUpperCase()));
         String text = String.format("%.2f", Integer.parseInt(matcher.group(1)) * rate);
         return text + " " + matcher.group(2).toUpperCase();
