@@ -126,7 +126,7 @@ public class Calculator42 extends JFrame implements ActionListener {
         calculator.setVisible(true);
     }
 
-    public static void saveData(double a, double b, String operator, double result) throws IOException{
+    public static <T> void saveData(T a, T b, String operator, T result) throws IOException{
         FileWriter fileWriter = new FileWriter(FileName, true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -225,7 +225,7 @@ public class Calculator42 extends JFrame implements ActionListener {
                 }
             }
             if (result == null) {
-                label.setText("被除数不能为 0！");
+                label.setText("ERROR!");
             } else if (Double.toString(result).length() > 10) {
                 label.setText(String.format("%.12f", result));
             } else if (result % 1 == 0.0) {
@@ -234,7 +234,7 @@ public class Calculator42 extends JFrame implements ActionListener {
                 label.setText(result.toString());
             }
             try {
-                saveData(a, b, operator, result != null ? result : 0.00);
+                saveData(a, b, operator, result != null ? result : "NULL");
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
