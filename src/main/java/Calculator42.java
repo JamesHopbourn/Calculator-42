@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
 import java.awt.event.FocusListener;
 import java.awt.event.ActionListener;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -72,11 +74,19 @@ public class Calculator42 extends JFrame implements ActionListener {
         });
         label.addFocusListener(new FocusListener() {
             public void focusGained(FocusEvent e) {
+                copyToClipboard(label);
                 if (finish) label.setText("");
             }
 
             public void focusLost(FocusEvent e) {
+                copyToClipboard(label);
                 if (finish) label.setText("");
+            }
+
+            public static void copyToClipboard(JTextField label){
+                StringSelection stringSelection = new StringSelection(label.getText());
+                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                clipboard.setContents(stringSelection, null);
             }
         });
         JP_north.add(label);
