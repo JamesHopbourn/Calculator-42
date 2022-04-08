@@ -21,7 +21,7 @@ public class Calculator42 extends JFrame implements ActionListener {
     // 计算器偏好设置
     public static final String title = "Calculator 42";
     public static final String customFont = "Serif";
-    public static final String dataFileName = "src/data.txt";
+    public static final String FileName = "src/data.txt";
     // 汇率转换 API key
     private static final String APIkey = System.getenv("APIKey");
     // 坐标定位
@@ -94,7 +94,7 @@ public class Calculator42 extends JFrame implements ActionListener {
     }
 
     public void addCenterElements() {
-        JP_center.setLayout(new GridLayout(6, 4));
+        JP_center.setLayout(new GridLayout(button_text.length / 4, 4));
         JP_center.setBackground(Color.decode("#6f6f6f"));
         for (String s : button_text) {
             JButton button = new JButton(s);
@@ -117,7 +117,7 @@ public class Calculator42 extends JFrame implements ActionListener {
 
     public static void main(String[] args) throws IOException{
         // 初始化存储文件
-        File file = new File(dataFileName);
+        File file = new File(FileName);
         Files.deleteIfExists(file.toPath());
         // 初始化计算器
         Calculator42 calculator = new Calculator42();
@@ -125,11 +125,10 @@ public class Calculator42 extends JFrame implements ActionListener {
     }
 
     public static void saveData(double a, double b, String operator, double result) throws IOException{
-        Date date = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        FileWriter fileWriter = new FileWriter(dataFileName, true);
+        FileWriter fileWriter = new FileWriter(FileName, true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        bufferedWriter.append(ft.format(date)).append("\t\t")
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        bufferedWriter.append(ft.format(new Date())).append("\t\t")
                     .append(String.valueOf(a)).append(" ")
                     .append(operator).append(" ")
                     .append(String.valueOf(b)).append(" = ")
@@ -157,7 +156,7 @@ public class Calculator42 extends JFrame implements ActionListener {
         }
         String actionCommand = e.getActionCommand();
         if (actionCommand.equals("42")){
-            Object[] options1 = {"GitHub", "Quit"};
+            Object[] objects = {"GitHub", "关闭"};
             ImageIcon imageIcon = new ImageIcon(((new ImageIcon("src/main/resources/icon.png"))
                     .getImage()).getScaledInstance(60, 60, Image.SCALE_SMOOTH));
             int result = JOptionPane.showOptionDialog(null, """
@@ -167,7 +166,7 @@ public class Calculator42 extends JFrame implements ActionListener {
                     
                     2022/04/07""", "版权信息",
                     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
-                    imageIcon, options1, null);
+                    imageIcon, objects, null);
             if (result == JOptionPane.YES_OPTION) {
                 Desktop desk = Desktop.getDesktop();
                 try {
