@@ -3,25 +3,27 @@ import java.awt.*;
 import java.net.*;
 import javax.swing.*;
 import java.util.Date;
+import java.awt.event.*;
+import java.util.HashMap;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-import java.awt.event.FocusEvent;
-import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
-import java.awt.event.FocusListener;
-import java.awt.event.ActionListener;
+import java.util.function.Function;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 
 import com.alibaba.fastjson.JSONObject;
 
-public class Calculator42 extends JFrame implements ActionListener {
+
+public class Calculator42 extends JFrame implements ActionListener, KeyListener {
     // 计算器偏好设置
     public static final String title = "Calculator 42";
     public static final String customFont = "Serif";
     public static final String FileName = "src/data.txt";
+    // HashMap action map
+    HashMap<Character, Function<String, String>> commands = new HashMap<>();
     // 汇率转换 API key
     private static final String APIkey = System.getenv("APIKey");
     // 坐标定位
@@ -43,6 +45,7 @@ public class Calculator42 extends JFrame implements ActionListener {
 
     public Calculator42() throws HeadlessException {
         init();
+        commandsMap();
         addNorthElements();
         addCenterElements();
     }
@@ -54,6 +57,10 @@ public class Calculator42 extends JFrame implements ActionListener {
         this.setLocation(FrameX, FrameY);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void commandsMap(){
+
     }
 
     public void addNorthElements() {
@@ -107,6 +114,7 @@ public class Calculator42 extends JFrame implements ActionListener {
             } else {
                 button.setBackground(Color.decode("#6f6f6f"));
             }
+            button.addKeyListener(this);
             button.setOpaque(true);
             button.setForeground(Color.white);
             button.setFont(new Font(customFont, Font.BOLD, 22));
@@ -155,29 +163,10 @@ public class Calculator42 extends JFrame implements ActionListener {
         }
         String actionCommand = e.getActionCommand();
         if (actionCommand.equals("42")){
-            Object[] objects = {"GitHub", "关闭"};
-            ImageIcon imageIcon = new ImageIcon(((new ImageIcon("src/main/resources/icon.png"))
-                    .getImage()).getScaledInstance(60, 60, Image.SCALE_SMOOTH));
-            int result = JOptionPane.showOptionDialog(null, """
-                    made by James Hopbourn
-                    
-                    软工 203 胡金栋
-                    
-                    2022/04/07""", "版权信息",
-                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
-                    imageIcon, objects, null);
-            if (result == JOptionPane.YES_OPTION) {
-                Desktop desk = Desktop.getDesktop();
-                try {
-                    desk.browse(new URI("https://github.com/JamesHopbourn/Calculator-42"));
-                } catch (IOException | URISyntaxException ex) {
-                    ex.printStackTrace();
-                }
-            }
+            copyrights();
         } else if (actionCommand.equals("C")) {
             // AC 归零
             label.setText("");
-            firstInput = null;
         } else if (actionCommand.equals("±")) {
             // 正负取反
             if (label.getText().startsWith("-")){
@@ -316,5 +305,40 @@ public class Calculator42 extends JFrame implements ActionListener {
         bufferedReader.close();
         // 返回 JSONObject 对象的 JSON 数据
         return JSONObject.parseObject(response.toString()).getJSONObject("conversion_rates");
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        commands.get(e.getKeyChar()).apply(operator);
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
+    public static void copyrights(){
+        Object[] objects = {"GitHub", "关闭"};
+        ImageIcon imageIcon = new ImageIcon(((new ImageIcon("src/main/resources/icon.png"))
+                .getImage()).getScaledInstance(60, 60, Image.SCALE_SMOOTH));
+        int result = JOptionPane.showOptionDialog(null, """
+                    made by James Hopbourn
+                    
+                    软工 203 胡金栋
+                    
+                    2022/04/07""", "版权信息",
+                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                imageIcon, objects, null);
+        if (result == JOptionPane.YES_OPTION) {
+            Desktop desk = Desktop.getDesktop();
+            try {
+                desk.browse(new URI("https://github.com/JamesHopbourn/Calculator-42"));
+            } catch (IOException | URISyntaxException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }
