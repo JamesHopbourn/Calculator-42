@@ -75,11 +75,13 @@ public class Calculator42 extends JFrame implements ActionListener {
         label.addFocusListener(new FocusListener() {
             public void focusGained(FocusEvent e) {
                 copyToClipboard(label);
+                label.setCaretColor(Color.white);
                 if (finish) label.setText("");
             }
 
             public void focusLost(FocusEvent e) {
                 copyToClipboard(label);
+                label.setCaretColor(Color.decode("#373838"));
                 if (finish) label.setText("");
             }
 
@@ -143,9 +145,6 @@ public class Calculator42 extends JFrame implements ActionListener {
 
     @Override
     // TODO 正负取反
-    // TODO 数字操作
-    // TODO 逻辑运算
-    // TODO 等式计算
     // TODO bin
     // TODO dec
     public void actionPerformed(ActionEvent e) {
@@ -277,7 +276,7 @@ public class Calculator42 extends JFrame implements ActionListener {
         // OTHPattern: 10 usd to twd
         Pattern CNYPattern = Pattern.compile("(\\d+)\\s+to\\s+(\\w+)");
         Pattern OTHPattern = Pattern.compile("(\\d+)\\s+(\\w+)\\s+to\\s+(\\w+)");
-        Pattern resultPattern = Pattern.compile("\\d+(|\\.\\d+) \\w{3}");
+        Pattern resultPattern = Pattern.compile("(\\d+(|\\.\\d+) \\w{3}|转换失败)");
         Matcher CNY = CNYPattern.matcher(s);
         Matcher OTH = OTHPattern.matcher(s);
         Matcher result = resultPattern.matcher(s);
@@ -306,10 +305,10 @@ public class Calculator42 extends JFrame implements ActionListener {
     public static JSONObject getData(String curr) throws IOException {
         // GET 请求汇率转换 API
         URL obj = new URL("https://v6.exchangerate-api.com/v6/" + APIkey + "/latest/" + curr);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-        con.setRequestMethod("GET");
+        HttpURLConnection connect = (HttpURLConnection) obj.openConnection();
+        connect.setRequestMethod("GET");
         // 写入数据
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connect.getInputStream()));
         String line;
         StringBuilder response = new StringBuilder();
         while ((line = bufferedReader.readLine()) != null)
