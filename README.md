@@ -26,3 +26,7 @@
 [java - adding multiple entries to a HashMap at once in one statement - Stack Overflow](https://stackoverflow.com/questions/8261075/adding-multiple-entries-to-a-hashmap-at-once-in-one-statement)  
 [Java 消除 if else 代码的几种方式 | 程序员技术之旅](https://www.zhangbj.com/p/793.html)  
 [Using Map and HashMap in Java](https://www.vogella.com/tutorials/JavaMap/article.html)  
+[How to Use Key Bindings (The Java™ Tutorials > Creating a GUI With Swing > Using Other Swing Features)](https://docs.oracle.com/javase/tutorial/uiswing/misc/keybinding.html)
+[Java 杂记 表驱动法和 if-else，switch-case 优化 - JavaDev | 一如Java深似海](https://v_vincen.gitee.io/en/Java-%E6%9D%82%E8%AE%B0-%E8%A1%A8%E9%A9%B1%E5%8A%A8%E6%B3%95%E5%92%8C-if-else%EF%BC%8Cswitch-case-%E4%BC%98%E5%8C%96/)  
+[js中如何优雅的替代 if-else - 掘金](https://juejin.cn/post/6993366068647460878)  
+[枚举的常用姿势 (JAVA 为例) | LIXI.FUN](https://lixi.fun/2020/07/23/enum-commonly-used-java/)  
