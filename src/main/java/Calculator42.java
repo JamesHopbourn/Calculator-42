@@ -34,9 +34,10 @@ public class Calculator42 extends JFrame implements ActionListener, KeyListener 
     public static final int FrameY = (ScreenHeight - FrameHeight) / 2;
     // 正则匹配和字符集
     Pattern topOperator = Pattern.compile("[C±%]|[a-z]{3}");
-    Pattern sideOperator = Pattern.compile("[÷x−+=]|42");
+    Pattern sideOperator = Pattern.compile("[÷x‒+=]|42");
+    // 为了跟负号区分，此处使用数字线代表减号，U+2012
     String[] button_text = {"bin", "dec", "hex", "42", "C", "±", "%", "÷", "7", "8", "9", "x",
-            "4", "5", "6", "−", "1", "2", "3", "+", ".", "0", "DEL", "="};
+            "4", "5", "6", "‒", "1", "2", "3", "+", ".", "0", "DEL", "="};
     // 主要控件
     private final JPanel JP_north = new JPanel();
     private final JPanel JP_center = new JPanel();
@@ -167,7 +168,7 @@ public class Calculator42 extends JFrame implements ActionListener, KeyListener 
             // AC 归零
             label.setText("");
         } else if (actionCommand.equals("±")) {
-            // 正负取反
+            // 正负取反 此处使用标准负号
             if (label.getText().startsWith("-")){
                 label.setText(label.getText().replaceFirst("-", ""));
             } else {
@@ -189,24 +190,19 @@ public class Calculator42 extends JFrame implements ActionListener, KeyListener 
         } else if (".0123456789".contains(actionCommand)) {
             // 数字操作
             label.setText(label.getText() + actionCommand);
-        } else if (actionCommand.matches("[÷x−+]")) {
+        } else if (actionCommand.matches("[÷x‒+]")) {
             // 运算符号
             operator = actionCommand;
             firstInput = label.getText();
             label.setText("");
         } else if (actionCommand.equals("=")) {
             // 等式计算
-            Double a = 0.0;
-            if (firstInput.startsWith("-")) {
-                a = (Double.parseDouble(firstInput.replace("-", ""))) * -1;
-            } else {
-                a = Double.valueOf(firstInput);
-            }
-            Double b = Double.valueOf(label.getText());
+            Double a = Double.parseDouble(firstInput);
+            Double b = Double.parseDouble(label.getText());
             Double result = null;
             switch (operator) {
                 case "+" -> result = a + b;
-                case "−" -> result = a - b;
+                case "‒" -> result = a - b;
                 case "x" -> result = a * b;
                 case "÷" -> {
                     if (b != 0) result = a / b;
@@ -234,8 +230,12 @@ public class Calculator42 extends JFrame implements ActionListener, KeyListener 
             label.setText(bin(Integer.parseInt(label.getText())));
             finish = true;
         } else if (actionCommand.equals("dec")){
-            String binNumber = label.getText().substring(1);
-            label.setText(Integer.valueOf(binNumber, 2).toString());
+            String number = label.getText().substring(2);
+            if (label.getText().contains("0b")) {
+                label.setText(Integer.valueOf(number, 2).toString());
+            } else if (label.getText().contains("0x")){
+                label.setText(String.valueOf(Integer.parseInt(number, 16)));
+            }
             finish = true;
         } else if (actionCommand.equals("hex")){
             label.setText(Integer.toHexString(Integer.parseInt(label.getText())).toUpperCase());
