@@ -16,7 +16,6 @@ import java.awt.datatransfer.StringSelection;
 
 import com.alibaba.fastjson.JSONObject;
 
-
 public class Calculator42 extends JFrame implements ActionListener, KeyListener {
     // 计算器偏好设置
     public static final String title = "Calculator 42";
