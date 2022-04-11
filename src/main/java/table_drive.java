@@ -1,29 +1,18 @@
-import com.alibaba.fastjson.util.Function;
-
 import java.util.HashMap;
+import java.util.function.Function;
 
-public class table_drive {
-    public static void main(String[] args) {
+class table_drive {
+    public static void main(String[] args) throws Exception {
         HashMap<String, Function<String, String>> map = new HashMap<>();
 
+        map.put("one", String::toUpperCase);
         map.put("two", String::toLowerCase);
-        map.put("three", new Function<String, String>() {
-            @Override
-            public String apply(String s) {
-                return s.toUpperCase();
-            }
-        });
+        map.put("three", String::trim);
 
-        String apply = map.get("three").apply("abc");
+        String apply = map.get("one").apply("abc");
         System.out.println(apply);
     }
-
-    private static Function<String, String> hello(String j) {
-        System.out.println(j);
-        return null;
-    }
 }
-
 
 
 
