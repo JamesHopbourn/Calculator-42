@@ -332,11 +332,12 @@ public class Calculator42 extends JFrame implements ActionListener, KeyListener 
                 JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
                 imageIcon, objects, null);
         if (result == JOptionPane.YES_OPTION) {
-            Desktop desk = Desktop.getDesktop();
             try {
-                desk.browse(new URI("https://github.com/JamesHopbourn/Calculator-42"));
-            } catch (IOException | URISyntaxException ex) {
-                ex.printStackTrace();
+                Runtime.getRuntime().exec(new String[]{"/usr/bin/open", "-a",
+                        "/Applications/Google Chrome.app",
+                        "https://github.com/JamesHopbourn/Calculator-42"});
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
