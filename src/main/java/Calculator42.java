@@ -81,12 +81,6 @@ public class Calculator42 extends JFrame implements ActionListener {
                 label.setCaretColor(Color.decode("#373838"));
                 if (finish) label.setText("");
             }
-
-            public static void copyToClipboard(JTextField label){
-                StringSelection stringSelection = new StringSelection(label.getText());
-                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-                clipboard.setContents(stringSelection, null);
-            }
         });
         JP_north.add(label);
         this.add(JP_north, BorderLayout.NORTH);
@@ -289,8 +283,13 @@ public class Calculator42 extends JFrame implements ActionListener {
     }
 
     // 计算完成后将结果复制到剪切板
-    public static void copyToClipboard(String text){
-        StringSelection stringSelection = new StringSelection(text);
+    public static <T> void copyToClipboard(T text){
+        StringSelection stringSelection = null;
+        if (text instanceof String){
+            stringSelection = new StringSelection((String) text);
+        } else if (text instanceof JLabel){
+            stringSelection = new StringSelection(((JLabel) text).getText());
+        }
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(stringSelection, null);
     }
