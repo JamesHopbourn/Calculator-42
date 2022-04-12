@@ -1,8 +1,15 @@
 ### Calculator-42
 仿 macOS 风格 Java 实现的计算器
 
-![](./resources/main.png)![](./resources/copyright.png)
-![](./resources/convert.png)![](./resources/result.png)
+<p float="left">
+    <img src="./resources/main.png" width="40%"/>
+    <img src="./resources/copyright.png" width="40%"/>
+</p>
+
+<p float="left">
+    <img src="./resources/convert.png" width="40%"/>
+    <img src="./resources/result.png" width="40%"/>
+</p>
 
 #### 参考资料
 [java计算器程序_哔哩哔哩](https://www.bilibili.com/video/BV1d54y1s7uC)  
