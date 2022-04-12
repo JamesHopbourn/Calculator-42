@@ -218,7 +218,7 @@ public class Calculator42 extends JFrame implements ActionListener {
         }
     }
 
-    // 重写的二进制 每隔四位空一格
+    // 重写二进制转换 每隔四位空一格
     public static String bin(int num) {
         int index = 0;
         int[] binary = new int[40];
