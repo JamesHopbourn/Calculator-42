@@ -1,6 +1,9 @@
 ### Calculator-42
 仿 macOS 风格 Java 实现的计算器
 
+![](./resources/main.png)![](./resources/copyright.png)
+![](./resources/convert.png)![](./resources/result.png)
+
 #### 参考资料
 [java计算器程序_哔哩哔哩](https://www.bilibili.com/video/BV1d54y1s7uC)  
 [Java better way to delete file if exists - Stack Overflow](https://stackoverflow.com/questions/27599965/java-better-way-to-delete-file-if-exists)  
